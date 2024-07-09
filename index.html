@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Corridas Uber/99</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Corridas Uber/99</h1>
+    </header>
+    <main>
+        <div class="form-group">
+            <label for="distance">Distância (km):</label>
+            <input type="number" id="distance" step="0.1">
+        </div>
+        <div class="form-group">
+            <label for="time">Tempo estimado (min):</label>
+            <input type="number" id="time" step="1">
+        </div>
+        <div class="form-group">
+            <label for="fare">Valor da viagem (R$):</label>
+            <input type="number" id="fare" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="platform">Plataforma:</label>
+            <select id="platform">
+                <option value="uber">Uber</option>
+                <option value="99">99</option>
+            </select>
+        </div>
+        <button onclick="calculate()">Calcular</button>
+        <div id="result"></div>
+    </main>
+    <footer>
+        <p>© 2024 Calculadora de Corridas</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
