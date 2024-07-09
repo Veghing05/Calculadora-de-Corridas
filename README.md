@@ -1,3 +1,5 @@
+## CALCULADORA DE CORRIDAS 99 E UBER
+
 Calculadora de Corridas Uber/99
 Esta é uma aplicação web simples que ajuda motoristas de Uber e 99 a determinar se é vantajoso ou não aceitar uma corrida. A aplicação calcula os ganhos líquidos, ganhos por quilômetro e ganhos por minuto com base nos valores fornecidos pelo usuário.
 
@@ -8,7 +10,9 @@ Entrada do valor total da viagem (em reais)
 Seleção da plataforma (Uber ou 99)
 Cálculo dos ganhos líquidos, ganhos por quilômetro e ganhos por minuto
 Exibição do resultado e uma recomendação sobre aceitar ou não a corrida
+
 Tecnologias Utilizadas
+
 HTML
 CSS
 JavaScript
@@ -26,13 +30,16 @@ bash
 Copiar código
 open index.html
 Preencha os campos com as informações da corrida e clique no botão "Calcular".
+
 Estrutura do Projeto
+
 Copiar código
 calculadora-corridas-uber-99/
 ├── index.html
 ├── styles.css
 └── script.js
 index.html
+
 Contém a estrutura básica da aplicação com os campos de entrada e o botão de calcular.
 
 styles.css
@@ -44,18 +51,19 @@ Contém a lógica da aplicação, que calcula os ganhos líquidos, ganhos por qu
 Contribuindo
 Se você deseja contribuir com este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
-Licença
+# Licença
 Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para mais detalhes.
 
-Contato
-Para mais informações ou dúvidas, entre em contato em seu-email@dominio.com.
+# Contato
+Para mais informações ou dúvidas, entre em contato em rsbvegh@outlook.com
 
 Esperamos que esta aplicação ajude os motoristas de Uber e 99 a tomarem decisões mais informadas sobre aceitar ou não uma corrida. Se você tiver alguma sugestão ou encontrar algum problema, por favor, nos avise!
 
 Screenshot
  (opcional, caso você queira incluir uma captura de tela da aplicação)
 
-Exemplo de Uso
+# Exemplo de Uso
+
 Insira a distância da viagem em quilômetros.
 Insira o tempo estimado da viagem em minutos.
 Insira o valor total da viagem em reais.
