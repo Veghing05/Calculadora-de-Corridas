@@ -1,46 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Corridas Uber/99</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CDC - CALCULADORA DE CUSTOS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Calculadora de Corridas Uber/99</h1>
+        <div href="#" class="tipo-veiculo">
+            <h1>Escolha o tipo de veiculo.</h1>
+            <a href="Alugado.html">Alugado</a>
+            <a href="Financiado.html">Financiado</a>
+            <a href="Quitado.html">Quitado</a>
+        </div>
+        <h2>Planeje suas corridas, otimize seus ganhos.</h2>
     </header>
+
     <main>
-        <div class="form-group">
-            <label for="distance">Distância (km):</label>
-            <input type="number" id="distance" step="0.1">
-        </div>
-        <div class="form-group">
-            <label for="time">Tempo estimado (min):</label>
-            <input type="number" id="time" step="1">
-        </div>
-        <div class="form-group">
-            <label for="fare">Valor da viagem (R$):</label>
-            <input type="number" id="fare" step="0.01">
-        </div>
-        <div class="form-group">
-            <label for="platform">Plataforma:</label>
-            <select id="platform">
-                <option value="uber">Uber</option>
-                <option value="99">99</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="savePreferences">
-            <label for="savePreferences">Salvar preferências</label>
-        </div>
-        <button onclick="calculate()">Calcular</button>
-        <button onclick="resetFields()">Zerar</button>
-        <div id="result"></div>
+
     </main>
+
     <footer>
-        <p>© 2024 Calculadora de Corridas</p>
+
     </footer>
-    <script src="script.js"></script>
+    
 </body>
 </html>

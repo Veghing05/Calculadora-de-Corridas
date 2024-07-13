@@ -1,80 +1,33 @@
-// script.js
+function calcularValorIdeal() {
+  // Obtendo os valores dos campos do formulário
+  const aluguelMensal = parseFloat(document.getElementById('aluguelMensal').value);
+  const quilometrosRodados = parseFloat(document.getElementById('quilometrosRodados').value);
+  const precoCombustivel = parseFloat(document.getElementById('precoCombustivel').value);
+  const consumoKmLitro = parseFloat(document.getElementById('consumoKmLitro').value);
+  const lucroDesejado = parseFloat(document.getElementById('lucroDesejado').value);
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadPreferences();
-});
+  // Calculando o custo do combustível por mês
+  const custoCombustivel = (quilometrosRodados / consumoKmLitro) * precoCombustivel;
 
-function calculate() {
-    const distance = parseFloat(document.getElementById('distance').value);
-    const time = parseFloat(document.getElementById('time').value);
-    const fare = parseFloat(document.getElementById('fare').value);
-    const platform = document.getElementById('platform').value;
+  // Calculando o custo total mensal
+  const custoTotalMensal = aluguelMensal + custoCombustivel;
 
-    if (document.getElementById('savePreferences').checked) {
-        savePreferences(distance, time, fare, platform);
-    }
+  // Calculando o custo por quilômetro
+  const custoPorKm = custoTotalMensal / quilometrosRodados;
 
-    if (isNaN(distance) || isNaN(time) || isNaN(fare)) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-    }
+  // Calculando a tarifa mínima para obter o lucro desejado
+  const tarifaMinima = (custoTotalMensal + lucroDesejado) / quilometrosRodados;
 
-    const uberCommission = 0.25; // 25%
-    const ninetynineCommission = 0.20; // 20%
+  // Calculando o lucro por quilômetro com a tarifa mínima
+  const lucroPorKm = tarifaMinima - custoPorKm;
 
-    let netEarnings;
-    if (platform === 'uber') {
-        netEarnings = fare * (1 - uberCommission);
-    } else if (platform === '99') {
-        netEarnings = fare * (1 - ninetynineCommission);
-    }
-
-    const earningsPerKm = netEarnings / distance;
-    const earningsPerMin = netEarnings / time;
-
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `
-        <p>Valor total da viagem: R$ ${fare.toFixed(2)}</p>
-        <p>Ganhos líquidos: R$ ${netEarnings.toFixed(2)}</p>
-        <p>Ganhos por km: R$ ${earningsPerKm.toFixed(2)}</p>
-        <p>Ganhos por minuto: R$ ${earningsPerMin.toFixed(2)}</p>
-    `;
-
-    const threshold = 10.0; // Valor mínimo aceitável hipotético
-    if (netEarnings >= threshold) {
-        resultDiv.innerHTML += "<p>Vale a pena aceitar a corrida.</p>";
-    } else {
-        resultDiv.innerHTML += "<p>Não vale a pena aceitar a corrida.</p>";
-    }
-}
-
-function resetFields() {
-    document.getElementById('distance').value = '';
-    document.getElementById('time').value = '';
-    document.getElementById('fare').value = '';
-    document.getElementById('platform').value = 'uber';
-    document.getElementById('savePreferences').checked = false;
-    document.getElementById('result').innerHTML = '';
-}
-
-function savePreferences(distance, time, fare, platform) {
-    localStorage.setItem('distance', distance);
-    localStorage.setItem('time', time);
-    localStorage.setItem('fare', fare);
-    localStorage.setItem('platform', platform);
-}
-
-function loadPreferences() {
-    if (localStorage.getItem('distance')) {
-        document.getElementById('distance').value = localStorage.getItem('distance');
-    }
-    if (localStorage.getItem('time')) {
-        document.getElementById('time').value = localStorage.getItem('time');
-    }
-    if (localStorage.getItem('fare')) {
-        document.getElementById('fare').value = localStorage.getItem('fare');
-    }
-    if (localStorage.getItem('platform')) {
-        document.getElementById('platform').value = localStorage.getItem('platform');
-    }
+  // Exibindo o resultado
+  const mensagemInformativa = document.getElementById('mensagemInformativa');
+  mensagemInformativa.innerHTML = `
+      <p>Lucro mensal desejado: R$ ${lucroDesejado.toFixed(2).replace('.', ',')}</p>
+      <p>Custo mensal: R$ ${custoTotalMensal.toFixed(2).replace('.', ',')}</p>
+      <p>Custo por quilômetro: R$ ${custoPorKm.toFixed(2).replace('.', ',')}</p>
+      <p>Com base nas informações fornecidas, para obter um lucro líquido de R$ ${lucroDesejado.toFixed(2).replace('.', ',')}, rodando ${quilometrosRodados.toFixed(2).replace('.', ',')} quilômetros no mês, você deve aceitar viagens com tarifas de, no mínimo, R$ ${tarifaMinima.toFixed(2).replace('.', ',')}.</p>
+      <p>Aceitando valores superiores a este, seu lucro por quilômetro será de R$ ${lucroPorKm.toFixed(2).replace('.', ',')}.</p>
+  `;
 }

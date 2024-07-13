@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARRO ALUGADO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tipo-veiculo">
+        <a href="index.html">Home</a>
+        <a href="Financiado.html">Financiado</a>
+        <a href="Quitado.html">Quitado</a>
+    </div>
+
+    <h2>INFORME OS DETALHES DO VEÍCULO ALUGADO</h2>
+
+    <form id="form-alugado" class="form-alugado">
+        <h3>Valor do aluguel mensal:</h3>
+        <label for="aluguelMensal">Aluguel Mensal (R$):</label>
+        <input type="number" id="aluguelMensal" name="aluguelMensal" placeholder="Informe o valor do aluguel mensal" required><br><br>
+
+        <h3>Quilômetros Rodados:</h3>
+        <label for="quilometrosRodados">Quilômetros Rodados:</label>
+        <input type="number" id="quilometrosRodados" name="quilometrosRodados" placeholder="KM's RODADOS" required><br><br>
+
+        <h3>Tipo de Combustível:</h3>
+        <div class="combustivel">
+            <label for="alcool">Álcool</label>
+            <input type="radio" id="alcool" name="combustivel" value="alcool" required>
+        
+            <label for="gasolina">Gasolina</label>
+            <input type="radio" id="gasolina" name="combustivel" value="gasolina" required>
+        </div><br>
+
+        <h3>Preço do Combustível:</h3>
+        <label for="precoCombustivel">Preço do Combustível (R$):</label>
+        <input type="number" id="precoCombustivel" name="precoCombustivel" step="0.01" placeholder="PREÇO DO COMBUSTÍVEL" required><br><br>
+
+        <h3>Consumo (KM/L):</h3>
+        <label for="consumoKmLitro">Consumo (KM/L):</label>
+        <input type="number" id="consumoKmLitro" name="consumoKmLitro" step="0.01" placeholder="Consumo KM/L" required><br><br>
+
+        <h3>Lucro Desejado:</h3>
+        <label for="lucroDesejado">Lucro Mensal Desejado (R$):</label>
+        <input type="number" id="lucroDesejado" name="lucroDesejado" placeholder="Informe o lucro desejado"><br><br>
+
+        <button type="button" class="btn-calcular" onclick="calcularValorIdeal()">Calcular Valor Ideal</button>
+    </form>
+
+    <div class="mensagem" id="mensagemInformativa"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
