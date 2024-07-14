@@ -1,18 +1,90 @@
-<!--INFORME OS DETALHES DO VEICULO FINANCIADO-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIADO</title>
+    <title>CARRO FINANCIADO</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="tipo-veiculo">
         <a href="index.html">Home</a>
-        <a href="Alugado.html">Alugado</a>
+        <a href="Financiado.html">Financiado</a>
         <a href="Quitado.html">Quitado</a>
     </div>
-    
+
+    <h2>INFORME OS DETALHES DO VEÍCULO FINANCIADO</h2>
+    <!-- Valor do automóvel -->
+    <form id="form-financiado" class="form-financiado">
+        <h3>Valor do automóvel (FIPE):</h3>
+        <label for="valorAutomovel">Valor do Automóvel (R$):</label>
+        <input type="number" id="valorAutomovel" name="valorAutomovel" placeholder="Informe o valor do automóvel" required><br><br>
+
+        <!-- Valor da parcela -->
+        <h3>Valor da Parcela:</h3>
+        <label for="valorParcela">Valor da Parcela (R$):</label>
+        <input type="number" id="valorParcela" name="valorParcela" placeholder="Informe o valor da parcela" required><br><br>
+
+        <!-- IPVA (4%) -->
+        <h3>IPVA (4% do valor do automóvel):</h3>
+        <label for="ipva">IPVA (R$):</label>
+        <input type="number" id="ipva" name="ipva" placeholder="Informe o valor do IPVA" required><br><br>
+
+        <!-- Depreciação por ano -->
+        <h3>Depreciação Anual (%):</h3>
+        <label for="depreciacaoAnual">Depreciação Anual (%):</label>
+        <input type="number" id="depreciacaoAnual" name="depreciacaoAnual" step="0.01" placeholder="Informe a depreciação anual" required><br><br>
+
+        <!-- Quilômetros rodados por mês -->
+        <h3>Quilômetros Rodados:</h3>
+        <label for="quilometrosRodados">Quilômetros Rodados:</label>
+        <input type="number" id="quilometrosRodados" name="quilometrosRodados" placeholder="KM's rodados" required><br><br>
+
+        <!-- Preço do seguro mensal -->
+        <h3>Seguro Mensal:</h3>
+        <label for="seguroMensal">Seguro Mensal (R$):</label>
+        <input type="number" id="seguroMensal" name="seguroMensal" placeholder="Informe o valor do seguro mensal" required><br><br>
+
+        <!-- Custo dos 4 pneus -->
+        <h3>Custo dos 4 Pneus:</h3>
+        <label for="custoPneus">Custo dos 4 Pneus (R$):</label>
+        <input type="number" id="custoPneus" name="custoPneus" placeholder="Informe o custo dos 4 pneus" required><br><br>
+
+        <!-- Vida útil dos pneus (Km) -->
+        <h3>Vida Útil dos Pneus (Km):</h3>
+        <label for="vidaUtilPneus">Vida Útil dos Pneus (Km):</label>
+        <input type="number" id="vidaUtilPneus" name="vidaUtilPneus" placeholder="Informe a vida útil dos pneus" required><br><br>
+
+        <!-- Custo de troca de óleo -->
+        <h3>Custo da Troca de Óleo:</h3>
+        <label for="custoTrocaOleo">Custo da Troca de Óleo (R$):</label>
+        <input type="number" id="custoTrocaOleo" name="custoTrocaOleo" placeholder="Informe o custo da troca de óleo" required><br><br>
+
+        <!-- Frequência da troca de óleo (Km) -->
+        <h3>Frequência da Troca de Óleo (Km):</h3>
+        <label for="frequenciaTrocaOleo">Frequência da Troca de Óleo (Km):</label>
+        <input type="number" id="frequenciaTrocaOleo" name="frequenciaTrocaOleo" placeholder="Informe a frequência da troca de óleo" required><br><br>
+
+        <!-- Preço do combustível -->
+        <h3>Preço do Combustível:</h3>
+        <label for="precoCombustivel">Preço do Combustível (R$):</label>
+        <input type="number" id="precoCombustivel" name="precoCombustivel" step="0.01" placeholder="Preço do combustível" required><br><br>
+
+        <!-- Consumo (KM/L) -->
+        <h3>Consumo (KM/L):</h3>
+        <label for="consumoKmLitro">Consumo (KM/L):</label>
+        <input type="number" id="consumoKmLitro" name="consumoKmLitro" step="0.01" placeholder="Consumo KM/L" required><br><br>
+
+        <!-- Lucro Desejado -->
+        <h3>Lucro Desejado:</h3>
+        <label for="lucroDesejado">Lucro Mensal Desejado (R$):</label>
+        <input type="number" id="lucroDesejado" name="lucroDesejado" placeholder="Informe o lucro desejado"><br><br>
+
+        <button type="button" class="btn-calcular" onclick="calcularValorIdeal()">Calcular Valor Ideal</button>
+    </form>
+
+    <div class="mensagem" id="mensagemInformativa"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -19,6 +19,14 @@ body {
     color: black;
 }
 
+.form-financiado {
+    color:white;
+}
+
+.form-financiado ::placeholder {
+    color: black;
+}
+
 .btn-calcular {
     padding: 10px 20px;
     background-color: green;
