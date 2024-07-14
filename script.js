@@ -1,10 +1,26 @@
+// Função para formatar valores em reais
+function formatarValor(valor) {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
+}
+
+// Função para obter valores dos campos do formulário
+function obterValor(id) {
+  const valor = parseFloat(document.getElementById(id).value);
+  return isNaN(valor) ? 0 : valor;
+}
+
+// Função para calcular valores do veículo alugado
 function calcularValorIdeal() {
-  // Obtendo os valores dos campos do formulário
-  const aluguelMensal = parseFloat(document.getElementById('aluguelMensal').value);
-  const quilometrosRodados = parseFloat(document.getElementById('quilometrosRodados').value);
-  const precoCombustivel = parseFloat(document.getElementById('precoCombustivel').value);
-  const consumoKmLitro = parseFloat(document.getElementById('consumoKmLitro').value);
-  const lucroDesejado = parseFloat(document.getElementById('lucroDesejado').value);
+  const aluguelMensal = obterValor('aluguelMensal');
+  const quilometrosRodados = obterValor('quilometrosRodados');
+  const precoCombustivel = obterValor('precoCombustivel');
+  const consumoKmLitro = obterValor('consumoKmLitro');
+  const lucroDesejado = obterValor('lucroDesejado');
+
+  if (quilometrosRodados <= 0 || consumoKmLitro <= 0) {
+      alert('Por favor, insira valores válidos para quilômetros rodados e consumo de combustível.');
+      return;
+  }
 
   // Calculando o custo do combustível por mês
   const custoCombustivel = (quilometrosRodados / consumoKmLitro) * precoCombustivel;
@@ -24,10 +40,10 @@ function calcularValorIdeal() {
   // Exibindo o resultado
   const mensagemInformativa = document.getElementById('mensagemInformativa');
   mensagemInformativa.innerHTML = `
-      <p>Lucro mensal desejado: R$ ${lucroDesejado.toFixed(2).replace('.', ',')}</p>
-      <p>Custo mensal: R$ ${custoTotalMensal.toFixed(2).replace('.', ',')}</p>
-      <p>Custo por quilômetro: R$ ${custoPorKm.toFixed(2).replace('.', ',')}</p>
-      <p>Com base nas informações fornecidas, para obter um lucro líquido de R$ ${lucroDesejado.toFixed(2).replace('.', ',')}, rodando ${quilometrosRodados.toFixed(2).replace('.', ',')} quilômetros no mês, você deve aceitar viagens com tarifas de, no mínimo, R$ ${tarifaMinima.toFixed(2).replace('.', ',')}.</p>
-      <p>Aceitando valores superiores a este, seu lucro por quilômetro será de R$ ${lucroPorKm.toFixed(2).replace('.', ',')}.</p>
+      <p>Lucro mensal desejado: ${formatarValor(lucroDesejado)}</p>
+      <p>Custo mensal: ${formatarValor(custoTotalMensal)}</p>
+      <p>Custo por quilômetro: ${formatarValor(custoPorKm)}</p>
+      <p>Com base nas informações fornecidas, para obter um lucro líquido de ${formatarValor(lucroDesejado)}, rodando ${quilometrosRodados} quilômetros no mês, você deve aceitar viagens com tarifas de, no mínimo, ${formatarValor(tarifaMinima)}.</p>
+      <p>Aceitando valores superiores a este, seu lucro por quilômetro será de ${formatarValor(lucroPorKm)}.</p>
   `;
 }

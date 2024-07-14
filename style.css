@@ -36,11 +36,16 @@ body {
 }
 
 .btn-calcular:hover {
-    background-color: darkblue;
+    background-color: orange;
 }
 
 .mensagem {
     margin-top: 20px;
     font-weight: bold;
     color: white;
+}
+
+h2,
+h3 {
+    color: yellowgreen;
 }
