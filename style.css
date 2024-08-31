@@ -1,51 +1,41 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
     background-color: black;
 }
 
-.tipo-veiculo a {
-    margin-right: 10px;
-    text-decoration: none;
-    color: green;
+body h2 {
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 80px;
 }
 
-.form-alugado {
-    margin-bottom: 20px;
+body a {
+   background-color: black;
+   color: white;
+   text-decoration: none;
+   text-align: center;
+   margin: 0 auto;
+   margin-top: 90px; 
+   display: inline-block; /* Faz com que o link respeite o margin auto */
+   padding: 10px 20px;
+   border: 2px solid white; /* Para melhorar a visibilidade do botão */
+   margin-right: 60px;
+   margin-left: 190px;
+}
+
+body h3, 
+label {
     color: white;
 }
 
-.form-alugado ::placeholder {
+input {
     color: black;
 }
 
-.form-financiado {
-    color:white;
-}
-
-.form-financiado ::placeholder {
-    color: black;
-}
-
-.btn-calcular {
-    padding: 10px 20px;
-    background-color: green;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-calcular:hover {
-    background-color: orange;
+button {
+    padding: 8px;
 }
 
 .mensagem {
-    margin-top: 20px;
-    font-weight: bold;
     color: white;
-}
-
-h2,
-h3 {
-    color: yellowgreen;
 }
