@@ -1,19 +1,59 @@
-<!--INFORME OS DETALHES DO VEICULO QUITADO-->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cálculo de Custo por Quilômetro - Veículo Quitado</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="tipo-veiculo">
-        <a href="index.html">Home</a>
-        <a href="Alugado.html">Alugado</a>
-        <a href="Financiado.html">Financiado</a>
-    </div>
-    
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h1>Informe os Detalhes do Veículo Quitado</h1>
+            <form id="form-quitado" class="form-quitado">
+                <fieldset>
+                    <legend>Dados do Veículo</legend>
+                    <label for="valorAutomovelQuitado">Valor do Automóvel (R$):</label>
+                    <input type="number" id="valorAutomovelQuitado" name="valorAutomovelQuitado" placeholder="Informe o valor do automóvel" required>
+
+                    <label for="quilometrosRodadosQuitado">Quilômetros Rodados:</label>
+                    <input type="number" id="quilometrosRodadosQuitado" name="quilometrosRodadosQuitado" placeholder="KM's rodados" required>
+
+                    <label for="precoCombustivelQuitado">Preço do Combustível (R$):</label>
+                    <input type="number" id="precoCombustivelQuitado" name="precoCombustivelQuitado" step="0.01" placeholder="Preço do combustível" required>
+
+                    <label for="consumoKmLitroQuitado">Consumo (KM/L):</label>
+                    <input type="number" id="consumoKmLitroQuitado" name="consumoKmLitroQuitado" step="0.01" placeholder="Consumo KM/L" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Dados Financeiros</legend>
+                    <label for="ipvaQuitado">IPVA 4% (R$):</label>
+                    <input type="number" id="ipvaQuitado" name="ipvaQuitado" placeholder="Informe o valor do IPVA 4% do veiculo" required>
+
+                    <label for="depreciacaoAnualQuitado">Depreciação Anual (%):</label>
+                    <input type="number" id="depreciacaoAnualQuitado" name="depreciacaoAnualQuitado" step="0.01" placeholder="Informe a depreciação anual" required>
+
+                    <label for="seguroMensalQuitado">Seguro Mensal (R$):</label>
+                    <input type="number" id="seguroMensalQuitado" name="seguroMensalQuitado" placeholder="Informe o valor do seguro mensal" required>
+
+                    <label for="lucroDesejadoQuitado">Lucro Mensal Desejado (R$):</label>
+                    <input type="number" id="lucroDesejadoQuitado" name="lucroDesejadoQuitado" placeholder="Informe o lucro desejado">
+                </fieldset>
+
+                <button type="button" class="btn-calcular" onclick="calcularValorQuitado()">Calcular Valor Ideal</button>
+            </form>
+
+            <div class="resultado" id="mensagemInformativaQuitado"></div>
+        </section>
+    </main>
+
+    <script src="quitado.js"></script>
 </body>
 </html>
