@@ -1,34 +1,39 @@
-function calcularValorFinanciado() {
-    const valorAutomovel = parseFloat(document.getElementById('valorAutomovel').value);
-    const valorParcela = parseFloat(document.getElementById('valorParcela').value);
-    const ipva = parseFloat(document.getElementById('ipva').value);
-    const depreciacaoAnual = parseFloat(document.getElementById('depreciacaoAnual').value);
-    const quilometrosRodados = parseFloat(document.getElementById('quilometrosRodados').value);
-    const precoCombustivel = parseFloat(document.getElementById('precoCombustivel').value);
-    const consumoKmLitro = parseFloat(document.getElementById('consumoKmLitro').value);
-    const seguroMensal = parseFloat(document.getElementById('seguroMensal').value);
-    const lucroDesejado = parseFloat(document.getElementById('lucroDesejado').value) || 0;
+function calcularValorIdeal() {
+    const valorAutomovel = parseFloat($('#valorAutomovel').val());
+    const valorParcela = parseFloat($('#valorParcela').val());
+    const quilometrosRodados = parseFloat($('#quilometrosRodados').val());
+    const precoCombustivel = parseFloat($('#precoCombustivel').val());
+    const consumoKmLitro = parseFloat($('#consumoKmLitro').val());
+    const seguroMensal = parseFloat($('#seguroMensal').val());
+    const lucroDesejado = parseFloat($('#lucroDesejado').val()) || 0;
 
-    if (isNaN(valorAutomovel) || isNaN(valorParcela) || isNaN(ipva) || isNaN(depreciacaoAnual) ||
-        isNaN(quilometrosRodados) || isNaN(precoCombustivel) || isNaN(consumoKmLitro) || isNaN(seguroMensal)) {
-        document.getElementById('mensagemInformativaFinanciado').innerText = "Por favor, preencha todos os campos corretamente.";
+    if (isNaN(valorAutomovel) || isNaN(valorParcela) || isNaN(quilometrosRodados) || 
+        isNaN(precoCombustivel) || isNaN(consumoKmLitro) || isNaN(seguroMensal)) {
+        $('#mensagemInformativaFinanciado').text("Por favor, preencha todos os campos corretamente.");
         return;
     }
 
-    // Calcular custos
+    // Adicionando verificação se quilometrosRodados é zero
+    if (quilometrosRodados === 0) {
+        $('#mensagemInformativaFinanciado').text("Quilômetros rodados não pode ser zero.");
+        return;
+    }
+
+    // Calcular IPVA
+    const ipva = valorAutomovel * 0.04;  // 4% do valor do automóvel
+
+    // Calcular custos por kms
     const custoCombustivel = (quilometrosRodados / consumoKmLitro) * precoCombustivel;
     const custoParcelaPorKm = valorParcela / quilometrosRodados;
     const custoSeguroPorKm = seguroMensal / quilometrosRodados;
-    const custoDepreciacaoPorKm = ((depreciacaoAnual / 100) * valorAutomovel) / (quilometrosRodados * 12);
-    const custoIpvaPorKm = ipva / quilometrosRodados;
-    const custoTotalPorKm = custoCombustivel / quilometrosRodados + custoParcelaPorKm + custoSeguroPorKm + custoDepreciacaoPorKm + custoIpvaPorKm;
+    const custoTotalPorKm = (custoCombustivel + custoParcelaPorKm + custoSeguroPorKm + ipva) / quilometrosRodados;
 
     // Valor ideal por km e lucro por km
     const valorIdealKm = custoTotalPorKm + (lucroDesejado / quilometrosRodados);
     const lucroPorKm = valorIdealKm - custoTotalPorKm;
 
-    // Calcular custo total mensal
-    const custoTotalMensal = valorParcela + seguroMensal + custoCombustivel + ipva;
+    // Calcular custo total mensal (aluguel + combustível + seguro + IPVA)
+    const custoTotalMensal = custoCombustivel + valorParcela + seguroMensal + ipva;
 
     // Meta diária e semanal considerando o custo e o lucro desejado
     const metaDiaria = (custoTotalMensal + lucroDesejado) / 26;  // 26 dias úteis no mês
@@ -40,15 +45,23 @@ function calcularValorFinanciado() {
     };
 
     // Exibir mensagem com os resultados
-    document.getElementById('mensagemInformativaFinanciado').innerHTML = `
+    $('#mensagemInformativaFinanciado').html(`
         <div class="caixa-info">
-            <div class="caixa">
-                <h4>Valor da Parcela</h4>
-                <span class="custo">${formatarDinheiro(valorParcela)}</span>
-            </div>
             <div class="caixa">
                 <h4>Custo do Combustível Mensal</h4>
                 <span class="custo">${formatarDinheiro(custoCombustivel)}</span>
+            </div>
+            <div class="caixa">
+                <h4>Custo da Parcela Mensal</h4>
+                <span class="custo">${formatarDinheiro(valorParcela)}</span>
+            </div>
+            <div class="caixa">
+                <h4>Custo do Seguro Mensal</h4>
+                <span class="custo">${formatarDinheiro(seguroMensal)}</span>
+            </div>
+            <div class="caixa">
+                <h4>IPVA</h4>
+                <span class="custo">${formatarDinheiro(ipva)}</span>
             </div>
             <div class="caixa">
                 <h4>Custo Total Mensal</h4>
@@ -81,6 +94,10 @@ function calcularValorFinanciado() {
         <span class="custo">${formatarDinheiro(valorIdealKm)}</span>.</p>
         <p>Aceitando valores superiores a este, seu lucro por quilômetro será de 
         <span class="lucro">${formatarDinheiro(lucroPorKm)}</span>.</p>
-    `;
+    `);
 }
-    
+
+// Adicione um listener ao botão de calcular
+$(document).ready(function() {
+    $('#btn-calcular').on('click', calcularValorIdeal);
+});

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cálculo de Custo por Quilômetro - Veículo Quitado</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -34,12 +35,14 @@
 
                 <fieldset>
                     <legend>Dados Financeiros</legend>
-                    <label for="ipvaQuitado">IPVA 4% (R$):</label>
-                    <input type="number" id="ipvaQuitado" name="ipvaQuitado" placeholder="Informe o valor do IPVA 4% do veiculo" required>
+                    <label for="ipvaQuitado">IPVA (4% do Veículo):</label>
+                    <output id="ipvaQuitado" name="ipvaQuitado" aria-live="polite"></output>
 
-                    <label for="depreciacaoAnualQuitado">Depreciação Anual (em torno de 8% ao ano):</label>
-                    <input type="number" id="depreciacaoAnualQuitado" name="depreciacaoAnualQuitado" step="0.01" placeholder="Informe a depreciação anual" required>
-
+                    <label for="depreciacaoAnualQuitado">Depreciação Anual (automática):</label>
+                    <output id="depreciacaoAnualQuitado" name="depreciacaoAnualQuitado" aria-live="polite"></output>
+                </fieldset>
+                    
+                <fieldset>
                     <label for="seguroMensalQuitado">Seguro Mensal (R$):</label>
                     <input type="number" id="seguroMensalQuitado" name="seguroMensalQuitado" placeholder="Informe o valor do seguro mensal" required>
 
@@ -50,7 +53,7 @@
                 <button type="button" class="btn-calcular" onclick="calcularValorQuitado()">Calcular Valor Ideal</button>
             </form>
 
-            <div class="resultado" id="mensagemInformativaQuitado"></div>
+            <div class="resultado" id="mensagemInformativaQuitado" aria-live="polite"></div>
         </section>
     </main>
 
